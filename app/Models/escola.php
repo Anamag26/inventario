@@ -9,8 +9,14 @@ class escola extends Model
 {
     protected $table= 'escolas';
     protected $fillable = [
-        'nome',
-        'localizacao',
+      'nome',
+      'localizacao',
+      'impressora',
+      'senhas',
+      'ip',
+      'ups',
+      'contacto',
+      'outro',
         
     ];
 
@@ -26,4 +32,5 @@ class escola extends Model
     {
       return $this->belongsTo(outros::class);
    }
+   
 }

@@ -44,7 +44,11 @@ class OutrosController extends Controller
 
         $outros = new outros();
         $outros->nomeoutros = $request->nomeoutros;
-        $outros->descricao = $request->descricao;
+        $outros->hostname = $request->hostname;
+        $outros->maquina = $request->maquina;
+        $outros->monitor = $request->monitor;
+        $outros->impressora=$request->impressora;
+        $outros->observacoes = $request->observacoes;
         $outros->id_escola = $request->id_escola;
     
         $outros->save();
@@ -72,7 +76,7 @@ class OutrosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    { 
         $escola = escola::findOrFail($id);
         $outros = outros::findOrFail($id);
         return view('salas.ouedit', compact('escola','outros'));
@@ -93,7 +97,11 @@ class OutrosController extends Controller
             'nomeoutros' => 'required'
         ]);
         $outros->nomeoutros = $request->nomeoutros;
-        $outros->descricao = $request->descricao;;
+        $outros->hostname = $request->hostname;
+        $outros->maquina = $request->maquina;
+        $outros->monitor = $request->monitor;
+        $outros->impressora=$rerquest->impressora;
+        $outros->observacoes = $request->observacoes;
         $outros->save();
         return redirect()->back()->with('message','Operation Successful !');
     } 

@@ -12,8 +12,12 @@ class sala extends Model
     protected $fillable = [
         'nome',
         'impressora',
+        'hostname',
         'maquina',
+        'monitor',
         'projetor',
+        'estadoprojetor',
+        'observacoes',
         'id_escola',
    
    
@@ -23,4 +27,5 @@ class sala extends Model
        {
           return $this->hasMany(escola::class);
       }
+     
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\escola;
 use App\Models\sala;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+      
         $escolas = escola::all();
         $salas=sala::all();
         return view('home', compact('escolas','salas'));

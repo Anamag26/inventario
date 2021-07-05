@@ -14,11 +14,15 @@ class CreateSalasTable extends Migration
     public function up()
     {
         Schema::create('salas', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
             $table->string('nome');
             $table->string('impressora');
+            $table->string('hostname');
             $table->string('maquina');
+            $table->string('monitor');
             $table->string('projetor');
+            $table->string('estadoprojetor');
+            $table->string('observacoes');
             $table->bigInteger('id_escola')->unsigned();
             $table->timestamps();
             $table->foreign('id_escola')->references('id')->on('escolas')->onDelete('cascade');

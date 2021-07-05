@@ -17,6 +17,12 @@ class CreateEscolasTable extends Migration
             $table->id('id');
             $table->string('nome');
             $table->string('localizacao');
+            $table->string('impressora');
+            $table->string('senhas');
+            $table->string('ip');
+            $table->string('ups');
+            $table->string('contacto');
+            $table->string('outro');
             $table->timestamps();
         });
     }

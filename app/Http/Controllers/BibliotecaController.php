@@ -40,11 +40,16 @@ class BibliotecaController extends Controller
             'nomemaquina' => 'required',
             
         ]);
-
+   
         $biblioteca = new biblioteca();
         $biblioteca->nomemaquina = $request->nomemaquina;
-        $biblioteca->descricao = $request->descricao;
+        $biblioteca->hostname = $request->hostname;
+        $biblioteca->maquina = $request->maquina;
+        $biblioteca->monitor = $request->monitor;
+        $biblioteca->observacoes = $request->observacoes;
         $biblioteca->id_escola = $request->id_escola;
+         
+   
     
         $biblioteca->save();
         return redirect()->back()->with('success', 'maquina criada com sucesso');
@@ -92,7 +97,10 @@ class BibliotecaController extends Controller
             'nomemaquina' => 'required'
         ]);
         $biblioteca->nomemaquina = $request->nomemaquina;
-        $biblioteca->descricao = $request->descricao;
+        $biblioteca->hostname = $request->hostname;
+        $biblioteca->maquina = $request->maquina;
+        $biblioteca->monitor = $request->monitor;
+        $biblioteca->observacoes = $request->observacoes;
         $biblioteca->save();
         return redirect()->back()->with('message','Operation Successful !');
     }

@@ -16,6 +16,10 @@ class CreateBibliotecasTable extends Migration
         Schema::create('bibliotecas', function (Blueprint $table) {
             $table->id();
             $table->string('nomemaquina');
+            $table->string('hostname');
+            $table->string('maquina');
+            $table->string('monitor');
+            $table->string('observacoes');
             $table->string('descricao');
             $table->bigInteger('id_escola')->unsigned();
             $table->timestamps();

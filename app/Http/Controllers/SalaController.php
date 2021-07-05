@@ -3,19 +3,85 @@
 namespace App\Http\Controllers;
 use App\Models\sala;
 use App\Models\escola;
-use Redirect;
+use App\Models\biblioteca;
+use App\Models\outros;
 use Illuminate\Http\Request;
 
 class SalaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
+     /**
+     * Display the specified resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        $search_text=$_GET['query'];
         
+        $bibliotecas=biblioteca::where(
+            'nomemaquina', 'LIKE', '%' .$search_text.'%'
+            )
+            ->orwhere(
+            'hostname','LIKE', '%'.$search_text.'%'
+            )
+            ->orwhere(
+            'maquina','LIKE', '%'.$search_text.'%'
+                )
+            ->orwhere(
+            'monitor','LIKE', '%'.$search_text.'%'
+            )
+            ->orwhere(
+            'observacoes','LIKE', '%'.$search_text.'%'
+            )
+            ->get();
+
+            $outros=outros::where(
+                'nomeoutros', 'LIKE', '%' .$search_text.'%'
+                )
+                ->orwhere(
+                'hostname','LIKE', '%'.$search_text.'%'
+                )
+                ->orwhere(
+                'maquina','LIKE', '%'.$search_text.'%'
+                    )
+                ->orwhere(
+                'monitor','LIKE', '%'.$search_text.'%'
+                )
+                ->orwhere(
+                    'impressora','LIKE', '%'.$search_text.'%'
+                    )
+                ->orwhere(
+                'observacoes','LIKE', '%'.$search_text.'%'
+                )
+                ->get();
+           
+
+        $salas=sala::where(
+                'nome','LIKE', '%'.$search_text.'%'
+                )
+            ->orwhere(
+                'impressora','LIKE', '%'.$search_text.'%'
+                )
+            ->orwhere(
+                'hostname','LIKE', '%'.$search_text.'%'
+                )
+            ->orwhere(
+                'maquina','LIKE', '%'.$search_text.'%'
+                )
+            ->orwhere(
+            'monitor','LIKE', '%'.$search_text.'%'
+            )
+            ->orwhere(
+                'projetor','LIKE', '%'.$search_text.'%'
+            )
+            ->orwhere(
+                'observacoes','LIKE', '%'.$search_text.'%'
+            )
+            ->get();
+
+        
+        return view('salas.search',compact('salas','bibliotecas','outros','search_text'));
     }
 
     /**
@@ -41,16 +107,22 @@ class SalaController extends Controller
             'nome' => 'required',
             
         ]);
-
-        $sala = new sala();
-        $sala->nome = $request->nome;
-        $sala->impressora = $request->impressora;
-        $sala->maquina = $request->maquina;
-        $sala->projetor = $request->projetor;
-        $sala->id_escola = $request->id_escola;
+       
+        $salas = new sala();
+        $salas->nome = $request->nome;
+        $salas->impressora = $request->impressora;
+        $salas->hostname = $request->hostname;
+        $salas->maquina = $request->maquina;
+        $salas->monitor = $request->monitor;
+        $salas->projetor = $request->projetor;
+        $salas->estadoprojetor=$request->estadoprojetor;
+        $salas->observacoes = $request->observacoes;
+        $salas->id_escola = $request->id_escola;
     
-        $sala->save();
+        $salas->save();
         return redirect()->back()->with('success', 'Sala criada com sucesso');
+
+        
         
     }
 
@@ -77,9 +149,9 @@ class SalaController extends Controller
      */
     public function edit($id)
     {
-        $escola = escola::findOrFail($id);
+        
         $sala = sala::findOrFail($id);
-        return view('salas.edit', compact('escola','sala'));
+        return view('salas.edit', compact('sala'));
     }
 
     /**
@@ -91,24 +163,26 @@ class SalaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $salas = sala::findOrFail($id);
         $escola = escola::findOrFail($id);
-        $sala = sala::findOrFail($id);
         $request->validate([
-            'nome' => 'required'
+            'nome' => 'required',
+           
         ]);
-        $sala->nome = $request->nome;
-        $sala->maquina = $request->maquina;
-        $sala->impressora = $request->impressora;
-        $sala->projetor = $request->projetor;
-        $sala->save();
-        return redirect()->back()->with('message','Operation Successful !');
+  
+        $salas->update($request->all());
+  
+        return redirect('/escolas')
+        ->with('warning', 'sala editada com sucesso');
+
     } 
-    public function biblioteca($id)//nao mudar
+   
+     
+    public function search()
     {
-        $escola = escola::findOrFail($id);
-        $salas = sala::all();
-        return view('salas.biblioteca', compact('escola','salas'));
+        //
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -122,6 +196,5 @@ class SalaController extends Controller
         $sala->delete();
         return back();
     }
-
-   
+    
 }

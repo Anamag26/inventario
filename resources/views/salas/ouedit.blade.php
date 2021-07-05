@@ -1,10 +1,19 @@
 @extends('layouts.admin')
 
 @section('content')
+
 <div id="main">
+  <div class="page-title">
+    <div class="row">
+        <div class="col-12 col-md-6 order-md-1 order-last">
+          <h3 class="pb-3">{{ $escola->nome}}</h3>
+        </div>
+        
+    </div>
+  </div>
   <div>
     <div class="float-start">
-    <h4 class="pb-3">{{$outros->nome}}</h4>
+    <h4 class="pb-3">{{$outros->nomeoutros}}</h4>
   </div>
   <div class="float-end">
   <a type="button" class="btn btn-primary"onclick="history.go(-1);">
@@ -26,24 +35,50 @@
                           <div class="row">
                               <div class="col-md-6 col-12">
                                   <div class="form-group">
-                                      <label for="nomeoutros">Nome</label>
-                                      <input type="text" id="nomeoutros" class="form-control" value="{{ $outros->nomeoutros }}" name="nomeoutros">
+                                      <label for="nome">Nome da Maquina</label>
+                                      <input type="text" id="nome" class="form-control" value="{{ $outros->nome }}" name="nome">
                                   </div>
                               </div>
                               <br>
                               <div class="col-md-8 col-12">
                                   <div class="form-group">
-                                      <label for="descricao">descricao</label>
-                                      <input type="text" id="descricao" class="form-control" value="{{ $outros->descricao }}" name="descricao">
+                                      <label for="hostname">Hostname</label>
+                                      <input type="text" id="hostname" class="form-control" value="{{ $outros->hostname }}" name="hostname">
                                   </div>
                               </div>
-                              <div class="col-md-6">
-              
-                                <input type="hidden" class="form-control" name="id_escola" id="id_escola" value="{{ $escola->id }}">
-                                @error('id_escola')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
+                              <br>
+                              <div class="col-md-8 col-12">
+                                  <div class="form-group">
+                                      <label for="maquina">Maquina</label>
+                                      <input type="text" id="maquina" class="form-control" value="{{ $outros->maquina }}" name="maquina">
+                                  </div>
                               </div>
+                              <br>
+                              <div class="col-md-8 col-12">
+                                  <div class="form-group">
+                                      <label for="monitor">Monitor</label>
+                                      <input type="text" id="monitor" class="form-control" value="{{ $outros->monitor }}" name="monitor">
+                                  </div>
+                              </div>
+                              <div class="col-md-6 col-12">
+                                  <div class="form-group">
+                                      <label for="impressora">Impressora</label>
+                                      <input type="text" id="impressora" class="form-control"  value="{{ $outros->impressora }}" name="impressora">
+                                  </div>
+                              </div>
+                              <div class="col-md-6 col-12">
+                                  <div class="form-group">
+                                      <label for="projetor">Projetor</label>
+                                      <input type="text" id="projetor" class="form-control" name="projetor"  value="{{ $outros->projetor }}">
+                                  </div>
+                              </div>
+                              <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="observacoes">observacoes</label>
+                                    <input type="text" id="observacoes" class="form-control" name="observacoes"  value="{{ $outros->observacoes}}">
+                                </div>
+                            </div>
+                              
                              
                               <div class="col-12 d-flex justify-content-end">
                                   <button type="submit" class="btn btn-primary ">Salvar</button>

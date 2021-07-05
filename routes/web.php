@@ -25,12 +25,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/', [EscolaController::class, 'index'])->name('index');
+Route::put('/edit', [EscolaController::class, 'edit'])->name('edit');
 Route::resource('escolas', EscolaController::class);
 
-Route::get('/', [SalaController::class, 'index'])->name('index');
+Route::get('/index', [SalaController::class, 'index'])->name('index');
 Route::put('/edit', [SalaController::class, 'edit'])->name('edit');
 Route::resource('salas', SalaController::class);
-
+Route::get('/search', 'SalaController@search');
 
 Route::get('/', [BibliotecaController::class, 'index'])->name('biblioteca');
 Route::resource('biblioteca', BibliotecaController::class);
@@ -42,7 +43,9 @@ Route::get('/', [InicioController::class, 'index'])->name('inicio');
 Route::resource('inicio', InicioController::class);
 
 // update Existing Product
-Route::put('sala/{id}', 'SalaController@update');
+Route::put('escola/{id}', 'SalaController@update')->name('sala.update');
+Route::put('escolas/{id}', 'SalaController@show');
+Route::put('escola/{id}','EscolaController@update');
 Route::put('biblioteca/{id}', 'BibliotecaController@show');
 Route::put('outros/{id}', 'OutrosController@show');
 

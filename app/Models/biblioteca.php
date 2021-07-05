@@ -11,7 +11,12 @@ class biblioteca extends Model
     protected $table= 'bibliotecas';
     protected $fillable = [
         'nomemaquina',
-        'descricao'
+        'hostname',
+        'maquina',
+        'monitor',
+        'observacoes',
+        'id_escola',
+        
    
    
     ];

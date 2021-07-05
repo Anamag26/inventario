@@ -1,7 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
+
 <div id="main">
+  <div class="page-title">
+    <div class="row">
+    </div>
+  </div>
   <div>
     <div class="float-start">
     <h4 class="pb-3">{{$sala->nome}}</h4>
@@ -33,8 +38,22 @@
                               <br>
                               <div class="col-md-8 col-12">
                                   <div class="form-group">
+                                      <label for="hostname">Hostname</label>
+                                      <input type="text" id="hostname" class="form-control" value="{{ $sala->hostname }}" name="hostname">
+                                  </div>
+                              </div>
+                              <br>
+                              <div class="col-md-8 col-12">
+                                  <div class="form-group">
                                       <label for="maquina">Maquina</label>
                                       <input type="text" id="maquina" class="form-control" value="{{ $sala->maquina }}" name="maquina">
+                                  </div>
+                              </div>
+                              <br>
+                              <div class="col-md-8 col-12">
+                                  <div class="form-group">
+                                      <label for="monitor">Monitor</label>
+                                      <input type="text" id="monitor" class="form-control" value="{{ $sala->monitor }}" name="monitor">
                                   </div>
                               </div>
                               <div class="col-md-6 col-12">
@@ -49,13 +68,38 @@
                                       <input type="text" id="projetor" class="form-control" name="projetor"  value="{{ $sala->projetor }}">
                                   </div>
                               </div>
-                              <div class="col-md-6">
-              
-                                <input type="hidden" class="form-control" name="id_escola" id="id_escola" value="{{ $escola->id }}">
-                                @error('id_escola')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                              </div>
+                             
+                              <div class="col-md-8">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="estadoprojetor" value="p1" {{ ($sala->estadoprojetor=="p1")? "checked" : "" }} id="estadoprojetor">
+                                    <label class="form-check-label" for="estadoprojetor">P1</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="estadoprojetor" value="p2" {{ ($sala->estadoprojetor=="p2")? "checked" : "" }} id="estadoprojetor">
+                                    <label class="form-check-label" for="estadoprojetor">P2</label>
+                                </div>  
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="estadoprojetor" value="p3" {{ ($sala->estadoprojetor=="p3")? "checked" : "" }} id="estadoprojetor">
+                                    <label class="form-check-label" for="estadoprojetor">P3</label>
+                                </div>  
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="estadoprojetor" value="p4" {{ ($sala->estadoprojetor=="p4")? "checked" : "" }} id="estadoprojetor">
+                                    <label class="form-check-label" for="estadoprojetor">P4</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="estadoprojetor" value="p5" {{ ($sala->estadoprojetor=="p5")? "checked" : "" }} id="estadoprojetor">
+                                    <label class="form-check-label" for="estadoprojetor">P5</label>
+                                </div>
+                                
+                            </div>
+
+                              <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="observacoes">observacoes</label>
+                                    <input type="text" id="observacoes" class="form-control" name="observacoes"  value="{{ $sala->observacoes}}">
+                                </div>
+                            </div>
+                          
                              
                               <div class="col-12 d-flex justify-content-end">
                                   <button type="submit" class="btn btn-primary ">Salvar</button>

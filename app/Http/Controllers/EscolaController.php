@@ -15,7 +15,7 @@ class EscolaController extends Controller
     public function index()
     {
         $escolas = escola::all();
-        return view('escolas.index', compact('escolas'));
+        return view('home', compact('escolas'));
     }
 
     /**
@@ -36,7 +36,25 @@ class EscolaController extends Controller
      */
     public function store(Request $request)
     {
-       //
+        
+        $request->validate([
+            'nome' => 'required',
+            
+        ]);
+       
+        $escola = new escola();
+        $escola->nome = $request->nome;
+        $escola->localizacao = $request->localizacao;
+        $escola->impressora = $request->impressora;
+        $escola->senhas = $request->senhas;
+        $escola->ip = $request->ip;
+        $escola->ups = $request->ups;
+        $escola->contacto = $request->contacto;
+        $escola->outro = $request->outro;
+    
+        $escola->save();
+   
+        return redirect()->back()->with('success', 'escola criada com sucesso');
     }
 
     /**
@@ -46,7 +64,7 @@ class EscolaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {  
         $escola = escola::findOrFail($id);
         $salas = sala::all();
         return view('salas.show', compact('escola','salas'));
@@ -59,8 +77,9 @@ class EscolaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-       //
+    { 
+        $escola = escola::findOrFail($id);
+        return view('salas.esedit', compact('escola'));
     }
 
     /**
@@ -72,7 +91,23 @@ class EscolaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $escola = escola::findOrFail($id);
+        $request->validate([
+            'nome' => 'required'
+        ]);
+
+        $escola->nome = $request->nome;
+        $escola->localizacao = $request->localizacao;
+        $escola->impressora = $request->impressora;
+        $escola->senhas = $request->senhas;
+        $escola->ip = $request->ip;
+        $escola->ups = $request->ups;
+        $escola->contacto = $request->contacto;
+        $escola->outro = $request->outro;
+        $escola->save();
+        return redirect()->route('escolas.index')->with('warning', 'escola editada com sucesso');
+
+        
     }
 
     /**

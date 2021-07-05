@@ -19,7 +19,7 @@
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
 
-                        <h1 class="auth-title"href="index.html">Inventario Benavente</h1>
+                        <h1 class="auth-title"href="index.html">Inventário Benavente</h1>
                     
                     <h1 class="auth-subtitle">Sign Up</h1>
                     <p class="auth-subtitle mb-5">Input your data to register to our website.</p>

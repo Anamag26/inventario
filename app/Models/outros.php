@@ -11,7 +11,14 @@ class outros extends Model
     protected $table= 'outros';
     protected $fillable = [
         'nomeoutros',
-        'descricao'
+        'impressora',
+        'hostname',
+        'maquina',
+        'monitor',
+        'projetor',
+        'observacoes',
+        'id_escola',
+   
    
    
     ];
