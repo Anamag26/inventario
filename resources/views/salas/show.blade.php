@@ -134,6 +134,7 @@
   </a>
 </div>
 <div class="clearfix"></div>
+
 <div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
   <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
     <div class="modal-content">
@@ -144,6 +145,7 @@
         </button>
       </div>
       <div class="modal-body">
+
         <form action="{{ route('salas.store') }}" method="POST">
           @csrf
           <form class="row g-3">
@@ -160,61 +162,68 @@
               <input type="text" class="form-control" id="hostname" name="hostname">
             </div>
             <p></p>
+
             <div class="col-md-6">
               <label for="maquina" class="form-label">Maquina </label>
               <input type="text" class="form-control" id="maquina" name="maquina">
             </div>
             <p></p>
+            
             <div class="col-md-6">
               <label for="monitor" class="form-label">Monitor/nr Série</label>
               <input type="text" class="form-control" id="monitor" name="monitor">
             </div>
             <p></p>
+
             <div class="col-12">
               <label for="impressora" class="form-label">Impressora</label>
               <input type="text" class="form-control" id="impressora" name="impressora" placeholder="">
             </div>
             <p></p>
+
             <div class="col-6">
               <label for="projetor" >Projetor</label>
               <input type="text" class="form-control" id="projetor" name="projetor" placeholder="">
             </div>
             <p></p>
+            
             <fieldset class="row mb-3">
               <label>Estado Projetor</label>
               <div class="col-6">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="estadoprojetor" value="p1" id="estadoprojetor">
-                <label class="form-check-label" for="estadoprojetor">P1</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="estadoprojetor" value="p1" id="estadoprojetor">
+                  <label class="form-check-label" for="estadoprojetor">P1</label>
+                </div>
+              
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="estadoprojetor" value="p2" id="estadoprojetor">
+                  <label class="form-check-label" for="estadoprojetor">P2</label>
+                </div>
+              
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="estadoprojetor" value="p3" id="estadoprojetor">
+                  <label class="form-check-label" for="estadoprojetor">P3</label>
+                </div>
+              
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="estadoprojetor" value="p4" id="estadoprojetor">
+                  <label class="form-check-label" for="estadoprojetor">P4</label>
+                </div>
+              
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="estadoprojetor" value="p5" id="estadoprojetor">
+                  <label class="form-check-label" for="estadoprojetor">P5</label>
+                </div>
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="estadoprojetor" value="p2" id="estadoprojetor">
-                <label class="form-check-label" for="estadoprojetor">P2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="estadoprojetor" value="p3" id="estadoprojetor">
-                <label class="form-check-label" for="estadoprojetor">P3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="estadoprojetor" value="p4" id="estadoprojetor">
-                <label class="form-check-label" for="estadoprojetor">P4</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="estadoprojetor" value="p5" id="estadoprojetor">
-                <label class="form-check-label" for="estadoprojetor">P5</label>
-              </div>
-
-            </div>
             </fieldset>
-            
-
-            
             <p></p>
+          
             <div class="col-12">
               <label for="observacoes" class="form-label">Observações</label>
               <input type="text" class="form-control" id="observacoes" name="observacoes" placeholder="">
             </div>
             <p></p>
+          
             <div class="col-md-6">
               <input type="hidden" class="form-control" name="id_escola" id="id_escola" value="{{ $escola->id }}">
               @error('id_escola')
@@ -237,8 +246,10 @@
       </form>
     </div>
   </div>
-</div>
+</div> 
+
 <div class="pt-4"></div>
+
 <div class="col-12 col-md-12">
   <div class="card">
     <div class="card-content">
