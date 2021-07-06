@@ -41,7 +41,6 @@ class OutrosController extends Controller
             'nomeoutros' => 'required',
             
         ]);
-
         $outros = new outros();
         $outros->nomeoutros = $request->nomeoutros;
         $outros->hostname = $request->hostname;
@@ -50,7 +49,6 @@ class OutrosController extends Controller
         $outros->impressora=$request->impressora;
         $outros->observacoes = $request->observacoes;
         $outros->id_escola = $request->id_escola;
-    
         $outros->save();
         return redirect()->back()->with('success', 'maquina criada com sucesso');
         

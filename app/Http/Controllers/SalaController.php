@@ -174,7 +174,6 @@ class SalaController extends Controller
   
         return redirect('/escolas')
         ->with('warning', 'sala editada com sucesso');
-
     } 
    
      

@@ -4,6 +4,49 @@
 
 <div id="main">
   <div class="page-title">
+    @if ($sala->id_escola=='1')
+        <h4>EB1</h4>
+
+    @elseif ($sala->id_escola=='2')
+        <h4>Centro Escolar</h4>
+
+    @elseif($sala->id_escola=='3')
+        <h4>Areias</h4>
+
+    @elseif($sala->id_escola=='4')
+        <h4>Foros da Charneca</h4>
+
+    @elseif($sala->id_escola=='5')
+        <h4>Barrosa</h4>
+
+    @elseif($sala->id_escola=='6')
+        <h4>Santo Estevão</h4>
+
+    @elseif($sala->id_escola=='7')
+        <h4>Sénior de Benavente</h4>
+
+    @elseif($sala->id_escola=='8')
+        <h4>EB1 Escudeiros</h4>
+
+    @elseif($sala->id_escola=='9')
+        <h4>Centro Escolar</h4>
+
+    @elseif($sala->id_escola=='10')
+        <h4>Acácias</h4>
+
+    @elseif($sala->id_escola=='11')
+        <h4>EB das Acácia</h4>
+
+    @elseif($sala->id_escola=='12')
+        <h4>Escola Velha do Porto Alto</h4>
+
+    @elseif($sala->id_escola=='13')
+        <h4>C.E. Porto Alto</h4>
+
+    @elseif($sala->id_escola=='14')
+        <h4>Sénior do Porto Alto</h4>
+
+    @endif
     <div class="row">
     </div>
   </div>
